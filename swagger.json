@@ -1,0 +1,1452 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "description": "Binar-Challenge-10",
+      "version": "1.0.0",
+      "title": "Binar-Challenge-10",
+      "termsOfService": "https://websitekamu/linkKeTermOfService",
+      "contact": {
+        "email": "naufal@gmail.com"
+      },
+      "license": {
+        "name": "Apache 2.0",
+        "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+      }
+    },
+    "host": "localhost:3000",
+    "basePath": "/api",
+    "tags": [
+      {
+        "name": "Auth",
+        "description": ""
+      },
+      {
+        "name": "Game",
+        "description": ""
+      },
+      {
+        "name": "User",
+        "description": ""
+      },
+      {
+        "name": "Score",
+        "description": ""
+      }
+    ],
+    "securityDefinitions": {
+      "Token": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization"
+      }
+    },
+    "schemes": ["http"],
+    "paths": {
+      "/register": {
+        "post": {
+          "tags": ["Auth"],
+          "summary": "register user",
+          "description": "",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "description": "data user",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "first_name": {
+                    "type": "string",
+                    "example": "naufal123"
+                  },
+                  "last_name": {
+                    "type": "string",
+                    "example": "naufal123"
+                  },
+                  "username": {
+                    "type": "string",
+                    "example": "naufal123"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "naufal123@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "naufal123"
+                  }
+                }
+              }
+            }
+          ],
+          "produces": ["application/json"],
+          "responses": {
+            "201": {
+              "description": "Succes",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "success"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Congratulations, your account has been successfully created."
+                  },
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": "1"
+                      },
+                      "first_name": {
+                        "type": "string",
+                        "example": "naufal"
+                      },
+                      "last_name": {
+                        "type": "string",
+                        "example": "naufal"
+                      },
+                      "username": {
+                        "type": "string",
+                        "example": "naufal"
+                      },
+                      "email": {
+                        "type": "string",
+                        "example": "naufal@gmail.com"
+                      },
+                      "password": {
+                        "type": "string",
+                        "example": "$2a$12$RK4I6bZyHK9GYA3i9dD.XO90PsgpbaoNLz4/JUxep7MUxjOtaKfc2"
+                      },
+                      "total_score": {
+                        "type": "integer",
+                        "example": "1"
+                      },
+                      "bio": {
+                        "type": "string",
+                        "example": "Naufal"
+                      },
+                      "location": {
+                        "type": "string",
+                        "example": "Jakarta"
+                      },
+                      "socail_media_url": {
+                        "type": "string",
+                        "example": "www.blbalbalba.com"
+                      },
+                      "craterdAt": {
+                        "type": "string",
+                        "example": "2022-08-11T13:00:39.286Z"
+                      },
+                      "updatedAt": {
+                        "type": "string",
+                        "example": "2022-08-11T13:00:39.286Z"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Failed",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "Failed"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Registration Failed, Please go back and double check your information and make sure that is valid"
+                  },
+                  "error": {
+                    "type": "string",
+                    "example": "Error"
+                  }
+                }
+              }
+            },
+            "409": {
+              "description": "Failed",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "Failed"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "The username is alredy registerd"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "failed",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "Failed"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Internal Server Error"
+                  },
+                  "error": {
+                    "type": "string",
+                    "example": "Error"
+                  }
+                }
+              }
+            }
+          }
+        
+
+      },
+      "/login": {
+        "post": {
+          "tags": ["Auth"],
+          "summary": "login user",
+          "description": "",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "description": "data user",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "example": "naufal123"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "naufal123"
+                  }
+                }
+              }
+            }
+          ],
+          "produces": ["application/json"],
+          "responses": {
+            "201": {
+              "description": "Succes",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "Success"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Login Successfully"
+                  },
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": "1"
+                      },
+                      "first_name": {
+                        "type": "string",
+                        "example": "Naufal"
+                      },
+                      "last_name": {
+                        "type": "string",
+                        "example": "Naufal"
+                      },
+                      "username": {
+                        "type": "string",
+                        "example": "Naufal"
+                      },
+                      "email": {
+                        "type": "string",
+                        "example": "naufal@gmail.com"
+                      },
+                      "accessToken": {
+                        "type": "string",
+                        "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJkYWRhbmdAZ21haWwuY29tIiwidXNlcm5hbWUiOiJkYWRhbmciLCJpYXQiOjE2MzcwNjI1NTR9.9RHTynKndbfwcGX2tUcBczymVgtjhM-MWZgCm99gIpo"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Failed",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "Failed"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "User Not Found!"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Failed",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "Failed"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Please enter a valid username or password"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "failed",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "Failed"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Internal Server Error"
+                  },
+                  "error": {
+                    "type": "string",
+                    "example": "Error"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/game": {
+        "get": {
+          "tags": ["Game"],
+          "summary": "List all Game",
+          "description": "",
+          "parameters": [],
+          "produces": ["application/json"],
+          "responses": {
+            "200": {
+              "description": "Succes",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "SUCCESS"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Successfully Retrive Data"
+                  },
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "example": "1"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Batu-Kertas-Gunting"
+                        },
+                        "description": {
+                          "type": "string",
+                          "example": "Game Batu Kertas dan Gunting"
+                        },
+                        "thumbnail_url": {
+                          "type": "string",
+                          "example": "lorem"
+                        },
+                        "game_url": {
+                          "type": "string",
+                          "example": "lorem ipsum"
+                        },
+                        "play_count": {
+                          "type": "integer",
+                          "example": "1"
+                        },
+                        "craterdAt": {
+                          "type": "string",
+                          "example": "2022-08-11T13:00:39.286Z"
+                        },
+                        "updatedAt": {
+                          "type": "string",
+                          "example": "2022-08-11T13:00:39.286Z"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Failed",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "Failed"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Some error occurred while retriving the Game"
+                  },
+                  "error": {
+                    "type": "string",
+                    "example": "error message"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": ["Game"],
+          "summary": "Create New Game",
+          "description": "",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "description": "data game",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Batu-kertas-Gunting"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "Game Batu Kertas dan Gunting"
+                  },
+                  "thumbnail_url": {
+                    "type": "string",
+                    "example": "lorem"
+                  },
+                  "game_url": {
+                    "type": "string",
+                    "example": "lorem ipsum"
+                  },
+                  "play_count": {
+                    "type": "integer",
+                    "example": "0"
+                  }
+                }
+              }
+            }
+          ],
+          "produces": ["application/json"],
+          "responses": {
+            "200": {
+              "description": "Succes",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "SUCCESS"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Successfully Retrive The Data"
+                  },
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "example": "1"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Batu-Kertas-Gunting"
+                        },
+                        "description": {
+                          "type": "string",
+                          "example": "Game Batu Kertas dan Gunting"
+                        },
+                        "thumbnail_url": {
+                          "type": "string",
+                          "example": "lorem"
+                        },
+                        "game_url": {
+                          "type": "string",
+                          "example": "lorem ipsum"
+                        },
+                        "play_count": {
+                          "type": "integer",
+                          "example": "1"
+                        },
+                        "craterdAt": {
+                          "type": "string",
+                          "example": "2022-08-11T13:00:39.286Z"
+                        },
+                        "updatedAt": {
+                          "type": "string",
+                          "example": "2022-08-11T13:00:39.286Z"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Failed",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "Failed"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Some error occurred while retriving the Game"
+                  },
+                  "error": {
+                    "type": "string",
+                    "example": "Error Message"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/game/recomendation": {
+        "get": {
+          "tags": ["Game"],
+          "summary": "List 4 popular game",
+          "description": "",
+          "parameters": [],
+          "produces": ["application/json"],
+          "responses": {
+            "200": {
+              "description": "Succes",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "SUCCESS"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Successfully Retriving Data"
+                  },
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "example": "1"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Batu-Kertas-Gunting"
+                        },
+                        "description": {
+                          "type": "string",
+                          "example": "Game Batu Kertas dan Gunting"
+                        },
+                        "play_count": {
+                          "type": "integer",
+                          "example": "1"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Failed",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "Failed"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Some error occurred while retriving the Game"
+                  },
+                  "error": {
+                    "type": "string",
+                    "example": "Error Message"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/game/{id}": {
+        "get": {
+          "tags": ["Game"],
+          "summary": "Get Detail Game",
+          "description": "",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id of game",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "produces": ["application/json"],
+          "responses": {
+            "200": {
+              "description": "Succes",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "SUCCESS"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Successfully Retriving Data"
+                  },
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": "1"
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "Batu-Kertas-Gunting"
+                      },
+                      "description": {
+                        "type": "string",
+                        "example": "Game Batu Kertas dan Gunting"
+                      },
+                      "thumbnail_url": {
+                        "type": "string",
+                        "example": "lorem"
+                      },
+                      "game_url": {
+                        "type": "string",
+                        "example": "lorem ipsum"
+                      },
+                      "play_count": {
+                        "type": "integer",
+                        "example": "1"
+                      },
+                      "craterdAt": {
+                        "type": "string",
+                        "example": "2022-08-11T13:00:39.286Z"
+                      },
+                      "updatedAt": {
+                        "type": "string",
+                        "example": "2022-08-11T13:00:39.286Z"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Failed",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "Failed"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Game is not registred"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Failed",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "Failed"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Some error occurred while retreving the Game data"
+                  },
+                  "error": {
+                    "type": "string",
+                    "example": "Error Message"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/game/{id}/leaderboard": {
+        "get": {
+          "tags": ["Game"],
+          "summary": "Get Leaderboard of Game",
+          "description": "",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of Game",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "produces": ["application/json"],
+          "responses": {
+            "200": {
+              "description": "Succes",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "SUCCESS"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Successfully Retriving Data"
+                  },
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "gameId": {
+                          "type": "integer",
+                          "example": "1"
+                        },
+                        "userId": {
+                          "type": "integer",
+                          "example": "2"
+                        },
+                        "score": {
+                          "type": "integer",
+                          "example": "30"
+                        },
+                        "detail_user": {
+                          "type": "object",
+                          "properties": {
+                            "first_name": {
+                              "type": "string",
+                              "example": "naufal123"
+                            },
+                            "last_name": {
+                              "type": "string",
+                              "example": "naufal123"
+                            },
+                            "username": {
+                              "type": "string",
+                              "example": "naufals123"
+                            },
+                            "email": {
+                              "type": "string",
+                              "example": "naufal123@gmail.com"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Failed",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "Failed"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Error to create the Player"
+                  },
+                  "error": {
+                    "type": "string",
+                    "example": "Error Message"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/user": {
+        "get": {
+          "tags": ["User"],
+          "summary": "Get All user",
+          "description": "",
+          "parameters": [],
+          "produces": ["application/json"],
+          "responses": {
+            "200": {
+              "description": "Succes",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "Success"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Successfully Retriving Data"
+                  },
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "first_name": {
+                          "type": "string",
+                          "example": "naufal123"
+                        },
+                        "last_name": {
+                          "type": "string",
+                          "example": "naufal123"
+                        },
+                        "username": {
+                          "type": "string",
+                          "example": "naufal123"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "naufal123@gmail.com"
+                        },
+                        "password": {
+                          "type": "string",
+                          "example": "$2a$12$RK4I6bZyHK9GYA3i9dD.XO90PsgpbaoNLz4/JUxep7MUxjOtaKfc2"
+                        },
+                        "total_score": {
+                          "type": "integer",
+                          "example": "1"
+                        },
+                        "bio": {
+                          "type": "string",
+                          "example": "lorem ipsum"
+                        },
+                        "location": {
+                          "type": "string",
+                          "example": "lorem ipsum"
+                        },
+                        "socail_media_url": {
+                          "type": "string",
+                          "example": "www.blbalbalba.com"
+                        },
+                        "craterdAt": {
+                          "type": "string",
+                          "example": "2022-08-11T13:00:39.286Z"
+                        },
+                        "updatedAt": {
+                          "type": "string",
+                          "example": "2022-08-11T13:00:39.286Z"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Failed",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "Success"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Failed to Retrive Data"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Failed",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "Success"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "No User Registered Yet"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/user/{username}": {
+        "get": {
+          "tags": ["User"],
+          "summary": "Get detail user",
+          "description": "",
+          "parameters": [
+            {
+              "name": "username",
+              "in": "path",
+              "description": "username of user",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "produces": ["application/json"],
+          "responses": {
+            "200": {
+              "description": "Succes",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "SUCCESS"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Successfully Retrive Data"
+                  },
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "first_name": {
+                        "type": "string",
+                        "example": "naufal"
+                      },
+                      "last_name": {
+                        "type": "string",
+                        "example": "naufal"
+                      },
+                      "username": {
+                        "type": "string",
+                        "example": "naufal"
+                      },
+                      "email": {
+                        "type": "string",
+                        "example": "naufal@gmail.com"
+                      },
+                      "password": {
+                        "type": "string",
+                        "example": "$2a$12$RK4I6bZyHK9GYA3i9dD.XO90PsgpbaoNLz4/JUxep7MUxjOtaKfc2"
+                      },
+                      "total_score": {
+                        "type": "integer",
+                        "example": "1"
+                      },
+                      "bio": {
+                        "type": "string",
+                        "example": "Coding"
+                      },
+                      "location": {
+                        "type": "string",
+                        "example": "Jakarta"
+                      },
+                      "socail_media_url": {
+                        "type": "string",
+                        "example": "www.blbalbalba.com"
+                      },
+                      "craterdAt": {
+                        "type": "string",
+                        "example": "2022-08-11T13:00:39.286Z"
+                      },
+                      "updatedAt": {
+                        "type": "string",
+                        "example": "2022-08-11T13:00:39.286Z"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Failed",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "Failed"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "User Not Registred "
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Failed",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "Failed"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Some error occurred while retreving the Player"
+                  },
+                  "error": {
+                    "type": "string",
+                    "example": "Error Message"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/user/playedGame": {
+        "get": {
+          "tags": ["User"],
+          "summary": "Get User Played Game",
+          "description": "",
+          "parameters": [],
+          "produces": ["application/json"],
+          "responses": {
+            "200": {
+              "description": "Succes",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "SUCCESS"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "successfully retrive data"
+                  },
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "gameId": {
+                          "type": "integer",
+                          "example": 1
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Failed",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "Failed"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Some error occurred while retreving the data"
+                  },
+                  "error": {
+                    "type": "string",
+                    "example": "Error Message"
+                  }
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "Token": []
+            }
+          ]
+        }
+      },
+      "/user/{id}": {
+        "put": {
+          "tags": ["User"],
+          "summary": "Edit Data User",
+          "description": "",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of User",
+              "required": true,
+              "type": "integer"
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "description": "Data User",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "first_name": {
+                    "type": "string",
+                    "example": "naufal123"
+                  },
+                  "last_name": {
+                    "type": "string",
+                    "example": "naufal123"
+                  },
+                  "username": {
+                    "type": "string",
+                    "example": "naufal123"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "naufal123@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "123456"
+                  },
+                  "total_score": {
+                    "type": "integer",
+                    "example": "1"
+                  },
+                  "bio": {
+                    "type": "string",
+                    "example": "lorem ipsum"
+                  },
+                  "location": {
+                    "type": "string",
+                    "example": "lorem ipsum"
+                  },
+                  "socail_media_url": {
+                    "type": "string",
+                    "example": "www.blbalbalba.com"
+                  }
+                }
+              }
+            }
+          ],
+          "produces": ["application/json"],
+          "responses": {
+            "200": {
+              "description": "Succes",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "Success"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Data user has been successfully updated."
+                  },
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": "1"
+                      },
+                      "first_name": {
+                        "type": "string",
+                        "example": "naufal"
+                      },
+                      "last_name": {
+                        "type": "string",
+                        "example": "naufal"
+                      },
+                      "username": {
+                        "type": "string",
+                        "example": "naufal"
+                      },
+                      "email": {
+                        "type": "string",
+                        "example": "naufal@gmail.com"
+                      },
+                      "password": {
+                        "type": "string",
+                        "example": "$2a$12$RK4I6bZyHK9GYA3i9dD.XO90PsgpbaoNLz4/JUxep7MUxjOtaKfc2"
+                      },
+                      "total_score": {
+                        "type": "integer",
+                        "example": "1"
+                      },
+                      "bio": {
+                        "type": "string",
+                        "example": "lorem ipsum"
+                      },
+                      "location": {
+                        "type": "string",
+                        "example": "lorem ipsum"
+                      },
+                      "socail_media_url": {
+                        "type": "string",
+                        "example": "www.blbalbalba.com"
+                      },
+                      "craterdAt": {
+                        "type": "string",
+                        "example": "2022-08-27T13:00:39.286Z"
+                      },
+                      "updatedAt": {
+                        "type": "string",
+                        "example": "2022-08-27T13:00:39.286Z"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Failed",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "Failed"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Hey you!, stop right there. Authorized required"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Failed",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "Failed"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Some error"
+                  },
+                  "error": {
+                    "type": "string",
+                    "example": "Error Message"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "failed",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "Failed"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "User is not found!"
+                  }
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "Token": []
+            }
+          ]
+        }
+      },
+      "/score": {
+        "put": {
+          "tags": ["Score"],
+          "summary": "Update score user in some game",
+          "description": "If the score has not been recorded, the system will add a score, if it is recorded, the system will change the score data",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "description": "id of game and score",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "gameId": {
+                    "type": "integer",
+                    "example": "1"
+                  },
+                  "score": {
+                    "type": "integer",
+                    "example": "10"
+                  }
+                }
+              }
+            }
+          ],
+          "produces": ["application/json"],
+          "responses": {
+            "200": {
+              "description": "Succes",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "SUCCESS"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Data score has been successfully updated"
+                  },
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "score": {
+                        "type": "integer",
+                        "example": "20"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "201": {
+              "description": "Succes",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "SUCCESS"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Data score has been successfully added"
+                  },
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "score": {
+                        "type": "integer",
+                        "example": "20"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Failed",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "Failed"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Login Required"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Failed",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "Failed"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Some error occurred while updating the Player Score"
+                  },
+                  "error": {
+                    "type": "string",
+                    "example": "Error Message"
+                  }
+                }
+              }
+            },
+            "501": {
+              "description": "Failed",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "example": "Failed"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Some error occurred while adding the Player score"
+                  },
+                  "error": {
+                    "type": "string",
+                    "example": "Error Message"
+                  }
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "Token": []
+            }
+          ]
+        }
+      }
+    }
+  }
+}
