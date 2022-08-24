@@ -3,6 +3,7 @@ const cors = require('cors');
 const router = require('./routes');
 const passport = require('./lib/passport');
 const app = express();
+const multer = require('multer')
 
 const swaggerUI = require('swagger-ui-express');
 
@@ -13,6 +14,7 @@ var corsOptions = {
   origin: 'http://localhost:3001',
 };
 app.use(cors());
+app.use(multer().any)
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
