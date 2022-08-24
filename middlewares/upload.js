@@ -1,5 +1,5 @@
 // import cloudinary uploader
-const cloud = require('./cloudinary');
+const cloud = require('../controllers/cloudinaryController')
 
 // fungsi menambah file
 const uploadFile = async (req, res) => {

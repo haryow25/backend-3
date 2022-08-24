@@ -34,6 +34,7 @@ const index = async (req, res) => {
 
 const register = async (req, res) => {
   const { first_name, last_name, email, username, password } = req.body;
+  console.log(req.body)
 
   try {
     const user = await User.findOne({
@@ -41,14 +42,19 @@ const register = async (req, res) => {
     });
 
     if (user) {
+      return res.status(200).json({
+        data: user,
+        message: 'succes'
+      })
     }
 
     // throw new Error('another error, e.g internal server error');
   } catch (err) {
-    return res.status(500).json({
-      result: 'Failed',
-      error: err.message,
-    });
+    // return res.status(500).json({
+    //   result: 'Failed',
+    //   error: err.message,
+    // });
+    console.log(err)
   }
 
   try {
@@ -68,12 +74,13 @@ const register = async (req, res) => {
     })
 
   } catch (err) {
-    return res.status(400).json({
-      result: 'failed',
-      message:
-        'Registration Failed',
-      error: err.errors[0].message,
-    });
+    // return res.status(400).json({
+    //   result: 'failed',
+    //   message:
+    //     'Registration Failed',
+    //   error: err.errors[0].message,
+    // });
+    console.log(err)
   }
 };
 
